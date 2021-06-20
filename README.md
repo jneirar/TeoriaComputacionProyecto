@@ -1,2 +1,2 @@
-# TeoriaComputacionProyecto
-Proyecto Final del Curso de Teoría de la Computación 2021-1
+# Proyecto de Teoría de la Computación
+Jorge Luis Neira Riveros - 201910048
