@@ -51,3 +51,7 @@ Si además queremos encontrar una cadena sincronizadora (no necesariamente míni
 
 Finalmente, probaremos nuestro algoritmo en este problema.
 **Pregunta 4.** Resolver el problema <a href="https://csacademy.com/ieeextreme-practice/task/magical-stones-2/">Magical Stones 2</a>
+
+## Estructura de las carpetas
+
+Dentro de cada carpeta Ejercicio se encuentra un *main.cpp* con cada ejercicio implementado individualmente. En el *main.cpp* que está fuera de las carpetas, unifica los ejercicios 1, 2 y 3 (el ejercicio 4 es independiente) y muestra un menú para probar los algoritmos con AFDs ingresados por consola o generados aleatoriamente.
