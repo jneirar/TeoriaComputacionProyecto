@@ -1,0 +1,167 @@
+AFDs sincronizables:
+- Automáta 1:
+8 0 1 1
+0 0 3
+0 1 4
+1 0 0
+1 1 2
+2 0 6
+2 1 0
+3 0 1
+3 1 7
+4 0 2
+4 1 6
+5 0 3
+5 1 1
+6 0 5
+6 1 7
+7 0 5
+7 1 4
+Min-Sinc = 1111001
+Length = 7
+
+- Automáta 2:
+4 0 1 1
+0 0 0
+0 1 3
+1 0 2
+1 1 0
+2 0 1
+2 1 2
+3 0 2
+3 1 1
+Min-Sinc = 011010110
+Length = 9
+
+- Automáta 3:
+6 0 1 1
+0 0 1
+0 1 0
+1 0 2
+1 1 1
+2 0 0
+2 1 3
+3 0 5
+3 1 2
+4 0 3
+4 1 2
+5 0 4
+5 1 5
+Min-Sinc = 1001010100110100100101001
+Length = 25
+
+- Automáta 4:
+4 0 1 1
+0 0 1
+0 1 2
+1 0 1
+1 1 0
+2 0 3
+2 1 3
+3 0 3
+3 1 2
+Min-Sinc = 110
+Length = 3
+
+- Automáta 5:
+3 0 1 1
+0 0 0
+0 1 0
+1 0 0
+1 1 1
+2 0 0
+2 1 2
+Min-Sinc = 0
+Length = 1
+
+- Automáta 6:
+4 0 1 1
+0 0 0
+0 1 0
+1 0 0
+1 1 1
+2 0 0
+2 1 2
+3 0 0
+3 1 3
+Min-Sinc = 0
+Length = 1
+
+- Automáta 7:
+3 0 1 1
+0 0 0
+0 1 0
+1 0 0
+1 1 1
+2 0 0
+2 1 0
+Min-Sinc = 0
+Length = 1
+
+- Automáta 8:
+3 0 1 1
+0 0 1
+0 1 1
+1 0 1
+1 1 2
+2 0 2
+2 1 0
+Min-Sinc = 0110
+Length = 4
+
+- Autómatas de Cerny de tamaño n: (Generado por el programa)
+n 0 1 1
+0 0 1
+0 1 1
+i 0 i
+i 1 (i+1) % n
+Min-Sinc = (0 1^(n-1) )^(n-2) 0
+Length = (n-1)^2
+
+- AFD Cerny n = 2:
+2 0 1 1
+0 0 1
+0 1 1
+1 0 1
+1 1 0
+Min-Sinc = 0
+Length = 1
+
+- AFD Cerny n = 3:
+3 0 1 1
+0 0 1
+0 1 1
+1 0 1
+1 1 2
+2 0 2
+2 1 0
+Min-Sinc = 0110
+Length = 4
+
+- AFD Cerny n = 4:
+4 0 1 1
+0 0 1
+0 1 1
+1 0 1
+1 1 2
+2 0 2
+2 1 3
+3 0 3
+3 1 0
+Min-Sinc = 011101110
+Length = 9
+
+- AFD Cerny n = 5:
+5 0 1 1
+0 0 1
+0 1 1
+1 0 1
+1 1 2
+2 0 2
+2 1 3
+3 0 3
+3 1 4
+4 0 4
+4 1 0
+Min-Sinc = 0111101111011110
+Length = 16
