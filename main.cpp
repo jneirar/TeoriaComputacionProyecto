@@ -7,6 +7,7 @@ double tiempo;
 
 void solve();
 void generateAFD(ll opt2, ll &n, ll &qi, ll &nqf, unordered_set<ll> &qf, vector<vector<ll>> &transition);
+double timeCalculate(double t0, double t1);
 
 int main(){
     srand (time(NULL));
@@ -44,7 +45,7 @@ void solve(){
                 t1 = clock();
                 if(minCad == ".")   cout << "\nNO\n";                     
                 else    cout << "\nMin-Sinc: " << minCad << "\nTamanio: " << minCad.length() << "\n";
-                tiempo = (double(t1-t0)/CLOCKS_PER_SEC);
+                tiempo = timeCalculate(t0, t1);
                 cout << "\nExecution Time: " << tiempo << "\n";
                 
                 string flag2;
@@ -63,7 +64,7 @@ void solve(){
                 if(Dec_Sinc(n, transition))   cout << "SI\n";
                 else cout << "NO\n";
                 t1 = clock();
-                tiempo = (double(t1-t0)/CLOCKS_PER_SEC);
+                tiempo = timeCalculate(t0, t1);
                 cout << "\nExecution Time: " << tiempo << "\n";
 
                 string flag2;
@@ -86,7 +87,7 @@ void solve(){
                     t1 = clock();
                     cout << "\nCadena: " << cadSinc << "\n";
                     cout << "Tamanio: " << cadSinc.length() << "\n";
-                    tiempo = (double(t1-t0)/CLOCKS_PER_SEC);
+                    tiempo = timeCalculate(t0, t1);
                     cout << "\nExecution Time: " << tiempo << "\n";
                 }
     
@@ -169,4 +170,8 @@ void generateAFD(ll opt2, ll &n, ll &qi, ll &nqf, unordered_set<ll> &qf, vector<
             break;
         }
     }
+}
+
+double timeCalculate(double t0, double t1){
+    return (double(t1-t0)/(CLOCKS_PER_SEC/1));
 }
