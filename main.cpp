@@ -2,6 +2,8 @@
 #include "functions.h"
 
 bool flag = 0;
+unsigned t0, t1;
+double tiempo;
 
 void solve();
 void generateAFD(ll opt2, ll &n, ll &qi, ll &nqf, unordered_set<ll> &qf, vector<vector<ll>> &transition);
@@ -37,9 +39,13 @@ void solve(){
             while(1){
                 generateAFD(opt2, n, qi, nqf, qf, transition);
                 //Automata leido
+                t0 = clock();
                 string minCad = shortestString(transition, n);
+                t1 = clock();
                 if(minCad == ".")   cout << "\nNO\n";                     
                 else    cout << "\nMin-Sinc: " << minCad << "\nTamanio: " << minCad.length() << "\n";
+                tiempo = (double(t1-t0)/CLOCKS_PER_SEC);
+                cout << "\nExecution Time: " << tiempo << "\n";
                 
                 string flag2;
                 cout << "\n\nProbar Min-Sinc en otro AFD (S/N): ";
@@ -53,8 +59,12 @@ void solve(){
             while(1){
                 generateAFD(opt2, n, qi, nqf, qf, transition);
                 //Automata leído
+                t0 = clock();
                 if(Dec_Sinc(n, transition))   cout << "SI\n";
                 else cout << "NO\n";
+                t1 = clock();
+                tiempo = (double(t1-t0)/CLOCKS_PER_SEC);
+                cout << "\nExecution Time: " << tiempo << "\n";
 
                 string flag2;
                 cout << "\n\nProbar Dec-Sinc en otro AFD (S/N): ";
@@ -71,9 +81,13 @@ void solve(){
                 if(!Dec_Sinc(n, transition))   
                     cout << "\nNo es sincronizable\n";
                 else{
+                    t0 = clock();
                     string cadSinc = Cad_Sinc(n, transition);
+                    t1 = clock();
                     cout << "\nCadena: " << cadSinc << "\n";
                     cout << "Tamanio: " << cadSinc.length() << "\n";
+                    tiempo = (double(t1-t0)/CLOCKS_PER_SEC);
+                    cout << "\nExecution Time: " << tiempo << "\n";
                 }
     
                 string flag2;
@@ -95,7 +109,7 @@ void solve(){
 void generateAFD(ll opt2, ll &n, ll &qi, ll &nqf, unordered_set<ll> &qf, vector<vector<ll>> &transition){
     switch (opt2){
         case 1:{    //Lee de consola
-            cout << "Ingresar automata en el formato indicado.\n";
+            cout << "\nInserta el automata en el formato indicado.\n";
             cin >> n >> qi >> nqf;
             ll tmp1, tmp2;
             for(ll i=0; i<nqf; i++){
@@ -113,7 +127,7 @@ void generateAFD(ll opt2, ll &n, ll &qi, ll &nqf, unordered_set<ll> &qf, vector<
             nqf = 1;
             qf.insert(1);
             do{
-                cout << "Inserta el tamanio del automata: ";
+                cout << "\nInserta el tamanio del automata: ";
                 cin >> n;
             }while(n < 2);
             transition.resize(n);
@@ -135,7 +149,7 @@ void generateAFD(ll opt2, ll &n, ll &qi, ll &nqf, unordered_set<ll> &qf, vector<
             nqf = 1;
             qf.insert(1);
             do{
-                cout << "Inserta el tamanio del automata de Cerny: ";
+                cout << "\nInserta el tamanio del automata de Cerny: ";
                 cin >> n;
             }while(n < 2);
             transition.resize(n);

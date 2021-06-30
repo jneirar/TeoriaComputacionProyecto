@@ -4,7 +4,7 @@
 #include "lib.h"
 //n = 23
 //v = 1110100000... 64 bits
-vector<bool> ullToVector(ull n){        //O(n)
+/*vector<bool> ullToVector(ull n){        //O(n)
     vector<bool> v(64);
     for(ull i = 0; i < 64; i++)
         v[i] = (n >> i) & 1;
@@ -16,13 +16,12 @@ ull vectorToUll(vector<bool> v){        //O(n)
         if(v[i])
             n += 1ULL << i;
     return n;
-}
+}*/
 
 string shortestString(vector<vector<ll>> transition, ll n){             //O(n*2^n)
     /*
     set<ll> sInit;
     for(ll i=0; i<n; i++)  sInit.insert(i);                             //O(nlg(n))
-
     //BFS
     map<set<ll>, string> shortString;                                   //max: 2^n
     set<set<ll>> visited;                                               //max: 2^n
@@ -32,7 +31,7 @@ string shortestString(vector<vector<ll>> transition, ll n){             //O(n*2^
     shortString[sInit] = "";                                            //O(1)
     while(!qState.empty()){                                             //O(V + E) | O(2^n + (costo de hacer la transición))
         set<ll> sNext0, sNext1;
-        for(ll state : qState.front()){                                 //O(n)
+        for(ll state : qState.front()){                                 //O(n lgn)
             sNext0.insert(transition[state][0]);                        //O(lgn)
             sNext1.insert(transition[state][1]);                        
         }
@@ -52,7 +51,8 @@ string shortestString(vector<vector<ll>> transition, ll n){             //O(n*2^
         if(sNext1.size() == 1)
             return shortString[sNext1]; 
     }*/
-    /**/
+
+    /*
     ull sInit = 0; //64 bits, por lo que puedo usarlo para 64 estados como máximo
     for(ull i=0; i<n; i++)  sInit += 1ULL << i;                         //O(n)
 
@@ -94,6 +94,46 @@ string shortestString(vector<vector<ll>> transition, ll n){             //O(n*2^
         for(int i = 0; i < 64; i++) sum += sNext1[i];                   //O(n)
         if(sum == 1)                                                    //O(1)
             return shortString[uNext1];                                 //O(1)
+    }*/
+    
+    vbool sInit(n, 1); //O(n)
+    
+    //BFS
+    unordered_map<vbool, string> shortString;                           //max: 2^n
+    unordered_set<vbool> visited;                                       //max: 2^n
+    queue<vbool> qState;                                             
+    qState.push(sInit);                                                 //O(1)
+    visited.insert(sInit);                                              //O(1)
+    shortString[sInit] = "";                                            //O(1)
+    
+    while(!qState.empty()){                                             //O(V + E) | O(2^n + (costo de hacer la transición))
+        vbool vCur = qState.front();                                    //O(n)
+        vbool sNext0(n, 0), sNext1(n, 0);                               //O(n)
+        for(ll i = 0; i < n; i++){                                      //O(n)
+            if(vCur[i]){
+                sNext0[transition[i][0]] = 1;
+                sNext1[transition[i][1]] = 1;
+            }
+        }
+        if(!visited.count(sNext0)){                                     //O(n)
+            visited.insert(sNext0);                                     //O(n)
+            shortString[sNext0] = shortString[qState.front()] + '0';    //O(n + 1) = O(n)
+            qState.push(sNext0);                                        //O(1)
+        }
+        if(!visited.count(sNext1)){                                     
+            visited.insert(sNext1);                                     
+            shortString[sNext1] = shortString[qState.front()] + '1';    
+            qState.push(sNext1);                                        
+        }
+        qState.pop();                                                   //O(1)
+        int sum = 0;
+        for(int i = 0; i < n; i++) sum += sNext0[i];                    //O(n)
+        if(sum == 1)                                                    //O(1)
+            return shortString[sNext0];                                 //O(n)
+        sum = 0;                                                        
+        for(int i = 0; i < n; i++) sum += sNext1[i];                    
+        if(sum == 1)                                                    
+            return shortString[sNext1];                                 
     }
     return ".";
 }
@@ -273,7 +313,7 @@ int menu2(){
         cout << "\n\n--------------------Eleccion de automata--------------------\n";
         cout << "1. Ingresar AFD por consola.\n";
         cout << "2. Generar AFD aleatorio.\n";
-        cout << "3. Generar AFD sincronizable de Cerny aleatorio.\n";
+        cout << "3. Generar AFD sincronizable de Cerny.\n";
         cout << "4. Regresar al menu anterior.\n";
         cout << "5. Salir del programa.\n";
         cout << "Ingrese una opcion: ";
