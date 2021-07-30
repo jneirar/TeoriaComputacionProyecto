@@ -15,7 +15,7 @@ int main(){
     for(ll i=0; i<2*n; i++)
         cin >> tmp1 >> tmp2 >> transition[tmp1][tmp2];
 
-    string minCad = shortestString(transition, n);
+    string minCad = Min_Sinc(transition, n);
     
     if(minCad == ".")   cout << "NO\n";                     
     else    cout << minCad << "\n" << minCad.length() << endl;

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "queue": "cpp",
+        "unordered_set": "cpp",
+        "utility": "cpp",
+        "vector": "cpp",
+        "xiosbase": "cpp"
+    }
+}

@@ -41,7 +41,7 @@ void solve(){
                 generateAFD(opt2, n, qi, nqf, qf, transition);
                 //Automata leido
                 t0 = clock();
-                string minCad = shortestString(transition, n);
+                string minCad = Min_Sinc(transition, n);
                 t1 = clock();
                 if(minCad == ".")   cout << "\nNO\n";                     
                 else    cout << "\nMin-Sinc: " << minCad << "\nTamanio: " << minCad.length() << "\n";
@@ -92,7 +92,7 @@ void solve(){
                 }
     
                 string flag2;
-                cout << "\n\nProbar Dec-Sinc en otro AFD (S/N): ";
+                cout << "\n\nProbar Cad-Sinc en otro AFD (S/N): ";
                 cin >> flag2;
                 if(flag2 == "N" || flag2 == "n")
                     break;
